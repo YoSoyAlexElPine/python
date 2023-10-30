@@ -1,8 +1,9 @@
-class ejecutar():
-    import requests
-    from bs4 import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
 
-    from Pelicula import Pelicula
+from Pelicula import Pelicula
+class ejecutar():
+
 
     lista=[]
 
@@ -32,9 +33,9 @@ class ejecutar():
         valoracion = div_pelicula.find('div', class_='avg-rating').text
 
 
-        lista.append(Pelicula(titulo,fecha_lanzamiento,valoracion,link))
+        lista.append(Pelicula(titulo,fecha_lanzamiento,valoracion,link,0,0,0,0))
 
-    lista_ordenada = sorted(lista, key=lambda pelicula: pelicula.nota, reverse=True)
+    lista_ordenada = sorted(lista, key=lambda pelicula: pelicula.valoracion, reverse=True)
 
     for pelicula in lista_ordenada:
         pelicula.mostrar_informacion()
