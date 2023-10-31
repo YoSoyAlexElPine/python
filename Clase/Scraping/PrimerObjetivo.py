@@ -2,8 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from Pelicula import Pelicula
-class ejecutar():
-
+def ejecutar():
 
     lista=[]
 

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 from Pelicula import Pelicula
 
-class ejecutar():
+def ejecutar():
 
     lista=[]
     url = 'https://www.filmaffinity.com/es/topcat.php?id=2023films'
