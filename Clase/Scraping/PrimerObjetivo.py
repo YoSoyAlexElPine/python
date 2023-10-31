@@ -1,8 +1,10 @@
 import requests
+import json
 from bs4 import BeautifulSoup
-
 from Pelicula import Pelicula
 def ejecutar():
+
+
 
     lista=[]
 

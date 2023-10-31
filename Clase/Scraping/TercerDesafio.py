@@ -1,4 +1,6 @@
 import requests
+import json
+
 from bs4 import BeautifulSoup
 
 from Pelicula import Pelicula
@@ -51,6 +53,21 @@ def ejecutar():
     ordenar = 6
 
     lista_ordenada = sorted(lista, key=lambda pelicula: pelicula.valoracion, reverse=True)
+    while True:
+        salida = input("Salida: (Mostrar por pantalla 0)(Enviar a fichero json 1): ")
+        if salida not in ('0', '1'):
+            print(salida, "no es valido")
+        else:
+            if salida == '0':
+                for pelicula in lista_ordenada:
+                    pelicula.mostrar_informacion2()
+                    break
+            elif salida == '1':
 
-    for pelicula in lista_ordenada:
-        pelicula.mostrar_informacion2()
+                datos_peliculas = [pelicula.convertir_a_dict() for pelicula in lista_ordenada]
+
+                archivo_salida = "datos.json"
+                with open(archivo_salida, "w") as archivo:
+                    json.dump(datos_peliculas, archivo, indent=4)
+                break
+

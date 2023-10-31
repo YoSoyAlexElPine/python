@@ -1,3 +1,4 @@
+import json
 class Pelicula:
 
     def __init__(self, titulo, fecha_lanzamiento, valoracion, link, genero, director, reparto,imagen):
@@ -30,5 +31,20 @@ class Pelicula:
         print(f'Link: {self.link}')
 
         print()
+
+    def convertir_a_dict(obj):
+        if isinstance(obj, Pelicula):
+            return {
+                "titulo": obj.titulo,
+                "fecha_lanzamiento": obj.fecha_lanzamiento,
+                "valoracion": obj.valoracion,
+                "link": obj.link,
+                "genero": obj.genero,
+                "director": obj.director,
+                "reparto": obj.reparto,
+                "imagen": obj.imagen
+            }
+        raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
+
 
 

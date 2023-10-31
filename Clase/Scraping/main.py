@@ -2,6 +2,8 @@ import TercerDesafio
 import SegundoDesafio
 import PrimerObjetivo
 import Funciones
+import Discord
+
 if __name__ == "__main__":
     while True:
         Funciones.menu()
