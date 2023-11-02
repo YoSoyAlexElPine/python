@@ -4,7 +4,13 @@ import PrimerObjetivo
 import Funciones
 import Discord
 
+
+
 if __name__ == "__main__":
+
+    Discord.ejecutar().client.loop.create_task(Discord.esperar_segundos())
+    Discord.ejecutar().client.run(Discord.TOKEN)
+
     while True:
         Funciones.menu()
         eleccion = input("Eleccion -> ")
@@ -17,7 +23,7 @@ if __name__ == "__main__":
         else:
             print("Haciendo Scraping...")
             if eleccion == '1':
-                PrimerObjetivo.ejecutar()
+                PrimerObjetivo.ejecutar('0')
             if eleccion == '2':
                 SegundoDesafio.ejecutar()
             if eleccion == '3':

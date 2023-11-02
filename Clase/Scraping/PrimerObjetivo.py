@@ -2,11 +2,10 @@ import requests
 import json
 from bs4 import BeautifulSoup
 from Pelicula import Pelicula
-def ejecutar():
 
 
-
-    lista=[]
+def ejecutar(salida):
+    lista = []
 
     url = "https://www.filmaffinity.com/es/rdcat.php?id=upc_th_es"
     response = requests.get(url)
@@ -22,7 +21,7 @@ def ejecutar():
         if div_mc_right:
             titulo_element = div_mc_right.find('h3').find('a')
             if titulo_element:
-                link=titulo_element.get('href')
+                link = titulo_element.get('href')
                 titulo = titulo_element.text.strip()
             else:
                 titulo = "Título no encontrado"
@@ -33,10 +32,17 @@ def ejecutar():
 
         valoracion = div_pelicula.find('div', class_='avg-rating').text
 
-
-        lista.append(Pelicula(titulo,fecha_lanzamiento,valoracion,link,0,0,0,0))
+        lista.append(Pelicula(titulo, fecha_lanzamiento, valoracion, link, 0, 0, 0, 0))
 
     lista_ordenada = sorted(lista, key=lambda pelicula: pelicula.valoracion, reverse=True)
 
-    for pelicula in lista_ordenada:
-        pelicula.mostrar_informacion()
+    if salida == '0':
+        for pelicula in lista_ordenada:
+            pelicula.mostrar_informacion()
+    if salida == '1':
+        listaPeliculas = ""
+        for pelicula in lista_ordenada:
+            listaPeliculas += pelicula.devolver_links()
+
+        return listaPeliculas
+

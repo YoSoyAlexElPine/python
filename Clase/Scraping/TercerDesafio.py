@@ -55,13 +55,14 @@ def ejecutar():
     lista_ordenada = sorted(lista, key=lambda pelicula: pelicula.valoracion, reverse=True)
     while True:
         salida = input("Salida: (Mostrar por pantalla 0)(Enviar a fichero json 1): ")
+        print()
         if salida not in ('0', '1'):
             print(salida, "no es valido")
         else:
             if salida == '0':
                 for pelicula in lista_ordenada:
                     pelicula.mostrar_informacion2()
-                    break
+                break
             elif salida == '1':
 
                 datos_peliculas = [pelicula.convertir_a_dict() for pelicula in lista_ordenada]

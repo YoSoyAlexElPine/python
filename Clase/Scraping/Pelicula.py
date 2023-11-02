@@ -11,8 +11,12 @@ class Pelicula:
         self.reparto = reparto
         self.imagen = imagen
 
-
-
+    def devolver_links(self):
+        lista = f"Link: {self.link}\n"
+        return lista
+    def devolver_informacion(self):
+        lista = f"Título: {self.titulo}\n"+f"Estreno: {self.fecha_lanzamiento}\n"+f"Nota: {self.valoracion}\n"+f"Link: {self.link}\n\n"
+        return lista
     def mostrar_informacion(self):
         print(f"Título: {self.titulo}")
         print(f"Estreno: {self.fecha_lanzamiento}")
